@@ -1,21 +1,18 @@
+import apiManager from "./apiManager.js"
+import domPrinter from "./DOMPrinter.js"
+
 // There was a const completeArray here before transplanting to Json that held all my entries.
 
+// Get entries from Json server
+apiManager.getAllEntries()  .then(parsedEntries => {
+    // Loop through the entries from Json server
+        parsedEntries.forEach(entry => {
 
-fetch("http://localhost:3000/entries") 
-    .then(entries => entries.json())  
-    .then(parsedEntries => {
-        parsedEntries.forEach(entries => {
+            domPrinter.printSingleEntry(entry)
+            
 
-            console.log(entries)
-
-            document.querySelector("#entry-log").innerHTML += `
-            <article>
-            <h3>${entries.dateOfEntry}</h3>
-            <h4>${entries.conceptsCovered}</h4>
-            <p>${entries.textParagraph}</p>
-            <p>${entries.moodOfEntry}</p>
-            </article>
-            `
+            // document.querySelector("#entry-log").innerHTML += 
+            // // HTMLSTring was here
         })
     }
 
