@@ -3,12 +3,12 @@
 const htmlBuilder = {
     buildSingleEntry: (singleJournalEntry) => {
         return `
-        <article>
-        <h3>${singleJournalEntry.dateOfEntry}</h3>
-        <h4>${singleJournalEntry.conceptsCovered}</h4>
-        <p>${singleJournalEntry.textParagraph}</p>
-        <p>${singleJournalEntry.moodOfEntry}</p>
-        </article>
+        <section id="single-entry-container">
+        <h3>${singleJournalEntry.date}</h3>
+        <h4>Concept: ${singleJournalEntry.concept}</h4>
+        <p>Journal Entry: ${singleJournalEntry.text}</p>
+        <p>Mood: ${singleJournalEntry.mood}</p>
+        </section>
         `
     }
 

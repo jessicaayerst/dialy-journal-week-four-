@@ -2,3 +2,8 @@ fieldset  {
     display: flex;
     flex-direction: column;
 }
+
+ /* Wanted to add a small area of padding around each journal entry for easier readability. */
+#single-entry-container {
+    padding: 1em;
+}
