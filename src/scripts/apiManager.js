@@ -4,7 +4,12 @@ const apiManager = {
         return fetch("http://localhost:3000/entries")
             .then(response => response.json());
     },
-
+    getOneEntry: entryId => {
+        return fetch(`http://localhost:3000/entries/${entryId}`)
+        .then(response =>
+          response.json()
+        );
+      },
 
 
     saveJournalEntry: (newEntry) => {
@@ -21,6 +26,15 @@ const apiManager = {
         return fetch(`http://localhost:3000/entries/${idToDelete}`, {
         method: "DELETE"
     });
+    },
+    editOneEntry: (id, journalObject) => {
+        return fetch(`http://localhost:3000/entries/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(journalObject)
+        });
     }
 
 };
