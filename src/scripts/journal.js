@@ -27,17 +27,19 @@ document.querySelector("#submit-btn").addEventListener("click", function () {
         mood: moodInput
     };
     // Using POST Method to Create Resources
-    // Now you must use fetch to create your journal entry in the API. The code below saves the new journal entry to the api and then prints it to the dom and saves it 
+    // Now you must use fetch to create your journal entry in the API. The code below saves the new journal entry to the api and then prints it to the dom and saves it
     apiManager.saveJournalEntry(newJournalEntry)
     .then(apiManager.getAllEntries)
     .then(parsedEntries => {
+
         document.querySelector("#entry-log").innerHTML = ""
         // Loop through the entries from Json server
         parsedEntries.forEach(entry => {
-    
+
             domPrinter.printSingleEntry(entry)
-    
+
         });
+
         });
     })
 
@@ -59,9 +61,9 @@ document.querySelector("body").addEventListener("click", () => {
                 document.querySelector("#entry-log").innerHTML = ""
                 // Loop through the entries from Json server
                 parsedEntries.forEach(entry => {
-            
+
                     domPrinter.printSingleEntry(entry)
-            
+
                 });
                 });
         })
@@ -76,7 +78,7 @@ document.querySelector("body").addEventListener("click", () => {
         const wordArray = event.target.id.split("-");
         const idOfThingWeWantToEdit = wordArray[2];
         console.log(idOfThingWeWantToEdit)
-            
+
         // pass that id into the apiManager to bring back the entry we want to edit
         apiManager.getOneEntry(idOfThingWeWantToEdit)
         .then(singleEntry =>  {
@@ -105,7 +107,7 @@ document.querySelector("body").addEventListener("click", () => {
             date: editedDateValue,
             concept: editedConceptValue,
             text: editedTextValue,
-            mood: editedMoodValue 
+            mood: editedMoodValue
         }
         // console.log("this is what we're going to send to the db", editedJournalObject)
         // send to the db with PUT method
@@ -116,9 +118,9 @@ document.querySelector("body").addEventListener("click", () => {
                 document.querySelector("#entry-log").innerHTML = ""
                 // Loop through the entries from Json server
                 parsedEntries.forEach(entry => {
-            
+
                     domPrinter.printSingleEntry(entry)
-            
+
                 });
                 });
         })

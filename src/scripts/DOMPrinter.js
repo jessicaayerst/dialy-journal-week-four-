@@ -2,19 +2,23 @@
 import htmlBuilder from "./singleJournalEntry.js"
 
 const domPrinter = {
-  
+
     printSingleEntry: (singleJournalEntry) => {
-        
+
     // Build HTML string for individual entry
     const htmlString = htmlBuilder.buildSingleEntry(singleJournalEntry)
-    
+
     // Add Html String to the DOM
     document.querySelector("#entry-log").innerHTML += htmlString;
+    document.querySelector("#journal-entry-date").value = "";
+    document.querySelector("#journal-entry-concept").value = "";
+    document.querySelector("#journal-entry-text").value = "";
+    document.querySelector("#mood-select").value = "";
     },
 
     printEntryEditForm: (journalObjectToEdit) => {
         const targetCard = document. querySelector(`#journal-card-${journalObjectToEdit.id}`)
-       
+
 
         targetCard.innerHTML =
         `<form action="">
@@ -42,9 +46,9 @@ const domPrinter = {
                 <option value="okay">Okay</option>
             </select>
         </fieldset>
-       
+
             <button id="edit-submit-btn-${journalObjectToEdit.id}" type="button">Save Edit</button>
-        
+
     </form>`
     }
 
